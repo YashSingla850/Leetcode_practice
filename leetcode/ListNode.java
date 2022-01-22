@@ -1,3 +1,4 @@
+package leetcode;
 // Leetcode problem 206 reverse a LinkedList
 
 
@@ -24,4 +25,5 @@ class Solution {
       return prev;
       
   }
+  
 }
