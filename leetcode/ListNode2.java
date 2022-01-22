@@ -1,4 +1,6 @@
-// **
+//  leetcode -876 middle of linked list
+
+// \**
 //  * Definition for singly-linked list.
 //  * public class ListNode {
 //  *     int val;
