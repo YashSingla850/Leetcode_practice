@@ -4,14 +4,14 @@ class Solution {
         // int y= matrix[0].length;
         for(int i= 0 ; i<matrix.length ; i++){
 
-        for(int j = i+1 ; j<matrix[0].length;j++){
+        for(int j = 0 ; j<matrix[0].length;j++){
 
-        // if(i>y){
+        if(i>j){
 
         int temp = matrix[i][j];
             matrix[i][j]=matrix[j][i];
             matrix[j][i] = temp;
-        // }
+        }
      }
   }
        for(int i = 0 ; i<matrix.length;i++){
