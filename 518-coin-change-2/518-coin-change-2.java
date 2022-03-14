@@ -4,9 +4,9 @@ class Solution {
         dp[0] = 1;
         for(int coin:coins){
 
-        for(int j = 0 ; j<=amount;j++){
-            if(j-coin>=0){
-                dp[j] += dp[j-coin];
+        for(int subAmount = 0 ; subAmount<=amount;subAmount++){
+            if(subAmount-coin>=0){
+                dp[subAmount] =dp[subAmount]+ dp[subAmount-coin];
             }
         }
         }
