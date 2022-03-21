@@ -1,30 +1,30 @@
 class Solution {
     public List<Integer> twoOutOfThree(int[] nums1, int[] nums2, int[] nums3) {
-       Set<Integer> set1 = toSet(nums1);
-      Set<Integer> set2 = toSet(nums2);
-    Set<Integer> set3 = toSet(nums3);
         List<Integer>res = new ArrayList<>();
-        for(int j:set1){
-            if(set2.contains(j)||set3.contains(j)){
-                res.add(j);
-            }
-            
+        HashSet<Integer>set1 = new HashSet<>();
+        HashSet<Integer>set2 = new HashSet<>();
+        HashSet<Integer>set3 = new HashSet<>();
+        for(int val:nums1){
+            set1.add(val);
         }
-        for(int k:set2){
-            if(set1.contains(k)||set3.contains(k)){
-                if(!res.contains(k))
-                res.add(k);
+         for(int val:nums2){
+            set2.add(val);
+        }
+         for(int val:nums3){
+            set3.add(val);
+        }
+        for(int key:set1){
+            if(set2.contains(key)||set3.contains(key)){
+                res.add(key);
+            }
+        }
+        for(int key:set2){
+            if(set3.contains(key)||set1.contains(key)){
+                if(!res.contains(key)){
+                    res.add(key);
+                }
             }
         }
         return res;
     }
-     Set<Integer> toSet(int[] n) {
-        Set<Integer> set = new HashSet<Integer>();
-        for ( int i : n) {
-            set.add(i);
-        }
-        return set;
-    }
 }
-
-   
