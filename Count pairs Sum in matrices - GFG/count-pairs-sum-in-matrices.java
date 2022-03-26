@@ -46,24 +46,49 @@ class GFG {
 
 class Solution {
     int countPairs(int mat1[][], int mat2[][], int n, int x) {
-     Set<Integer>set1 = new HashSet <> (); 
-     Set<Integer>set2 = new HashSet<>(); 
-     int count= 0;
-     for(int i = 0;i<mat1.length;i++){
-         for(int j=0;j<mat1[i].length;j++){
-             set1.add(mat1[i][j]);
-         }
-     }
-      for(int i = 0;i<mat2.length;i++){
-         for(int j=0;j<mat2[i].length;j++){
-             set2.add(mat2[i][j]);
-             }
-         }
-         for(int key : set1){
-             if(set2.contains(x-key))
-             count++;
-         }
-         return count;
-     }
-    
+        int count=0;
+        int size = mat2.length*mat2[0].length;
+        int left = 0 ;
+        int right = size-1;
+        while(left<size&&right>=0){
+            int r1 = left/mat1.length;
+            int c1 = left%mat1.length;
+            int r2 = right/mat2.length;
+            int c2 = right%mat2.length;
+            if(mat1[r1][c1]+mat2[r2][c2]==x){
+                count++;
+                left++;
+                right--;
+            }else if(mat1[r1][c1]+mat2[r2][c2]>x){
+                right--;
+            }else{
+                left++;
+            }
+        }
+        return count;
+        // code here
+    }
 }
+// class Solution {
+//     int countPairs(int mat1[][], int mat2[][], int n, int x) {
+//      Set<Integer>set1 = new HashSet <> (); 
+//      Set<Integer>set2 = new HashSet<>(); 
+//      int count= 0;
+//      for(int i = 0;i<mat1.length;i++){
+//          for(int j=0;j<mat1[i].length;j++){
+//              set1.add(mat1[i][j]);
+//          }
+//      }
+//       for(int i = 0;i<mat2.length;i++){
+//          for(int j=0;j<mat2[i].length;j++){
+//              set2.add(mat2[i][j]);
+//              }
+//          }
+//          for(int key : set1){
+//              if(set2.contains(x-key))
+//              count++;
+//          }
+//          return count;
+//      }
+    
+// }
