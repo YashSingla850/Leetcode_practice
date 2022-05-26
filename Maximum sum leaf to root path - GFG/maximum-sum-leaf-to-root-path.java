@@ -111,26 +111,56 @@ class Tree {
 //User function Template for Java
 
 class Solution
-{
+{    static int max = Integer.MIN_VALUE;
     public static int maxPathSum(Node root)
     {
-        //code here
-        if(root.left!=null &&root.right!=null){
-             int left = maxPathSum(root.left);
-         int right = maxPathSum(root.right);
-         int val = Math.max(left,right)+root.data;
-         return val;
-        }else if(root.left!=null){
-            int left = maxPathSum(root.left);
-             return left+root.data;
-        }else if(root.right!=null){
-            int right = maxPathSum(root.right);
-            return  right+root.data;
-        }else{
-            return root.data;
+       max =Integer.MIN_VALUE;
+      travel(root,0);
+      return max;
+        
+    }
+    public static void travel(Node node , int sum){
+        if(node==null){
+            return;
         }
+        if(node.left==null&&node.right==null){
+            sum = sum+node.data;
+            if(max<sum){
+                max =sum;
+            }
+            return;
+        }
+        
+        travel(node.left,sum+node.data);
+        travel(node.right,sum+node.data);
     }
 }
+
+// class Solution
+// {
+//     public static int maxPathSum(Node root)
+//     {
+//         //code here
+//         if(root.left!=null &&root.right!=null){
+//              int left = maxPathSum(root.left);
+//          int right = maxPathSum(root.right);
+//          int val = Math.max(left,right)+root.data;
+//          return val;
+//         }else if(root.left!=null){
+//             int left = maxPathSum(root.left);
+//              return left+root.data;
+//         }else if(root.right!=null){
+//             int right = maxPathSum(root.right);
+//             return  right+root.data;
+//         }else{
+//             return root.data;
+//         }
+//     }
+// }
+
+
+
+
 // class Solution
 // {
 //     public static int maxPathSum(Node root)
