@@ -2,14 +2,12 @@ class Solution {
     public int minMaxGame(int[] nums) {
         int n = nums.length;
         while(n!=1){
-             int j =0;
-            for(int i =0;i<n-1;i+=2){
+            for(int j=0,i =0;i<n-1;i+=2,j++){
                 if(j%2==0){
                     nums[j] =  Math.min(nums[i],nums[i+1]);
                 }else{
                     nums[j] =Math.max(nums[i],nums[i+1]);
-                }
-                j++;
+                }   
             }
             n = n/2;
             
