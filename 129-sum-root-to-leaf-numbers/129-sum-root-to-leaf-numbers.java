@@ -18,16 +18,16 @@ class Solution {
     
     public int sumNumbers(TreeNode root) {
         sum =0;
-        helper(root,1,0);
+        helper(root,0);
         return sum;
         
     }
-    public void helper(TreeNode node , int level,int val){
+    public void helper(TreeNode node ,int val){
          if(node==null){
              return ;
          }
-        helper(node.left,level+1,10*val+node.val);
-         helper(node.right,level+1,10*val+node.val);
+        helper(node.left,10*val+node.val);
+         helper(node.right,10*val+node.val);
         if(node.left==null&&node.right==null){
             int num = 10*val+node.val;
             sum+=num;
