@@ -18,12 +18,13 @@ class Solution {
         while(fast!=null ){
             if(slow.val == fast.val){
                 slow.next = fast.next;
+                fast = fast.next;
 
             }else{
              slow = fast;
-             
+             fast= fast.next;
         }
-            fast= fast.next;
+            // fast= fast.next;
     }
         return head;
     }
