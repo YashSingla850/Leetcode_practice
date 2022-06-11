@@ -12,20 +12,38 @@ class Solution {
     public ListNode deleteDuplicates(ListNode head) {
         if(head==null || head.next==null){
             return head;
-            
         }
-       ListNode fast = head.next , slow= head; 
-        while(fast!=null ){
-            if(slow.val == fast.val){
-                slow.next = fast.next;
-                fast = fast.next;
-
+        ListNode cur = head;
+        while( cur.next!=null){
+            if(cur.val==cur.next.val){
+               cur.next = cur.next.next;
             }else{
-             slow = fast;
-             fast= fast.next;
+                 cur = cur.next;
+             }
         }
-            // fast= fast.next;
-    }
         return head;
     }
 }
+
+
+// class Solution {
+//     public ListNode deleteDuplicates(ListNode head) {
+//         if(head==null || head.next==null){
+//             return head;
+            
+//         }
+//        ListNode fast = head.next , slow= head; 
+//         while(fast!=null ){
+//             if(slow.val == fast.val){
+//                 slow.next = fast.next;
+//                 fast = fast.next;
+
+//             }else{
+//              slow = fast;
+//              fast= fast.next;
+//         }
+//             // fast= fast.next;
+//     }
+//         return head;
+//     }
+// }
