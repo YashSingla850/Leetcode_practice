@@ -2,11 +2,13 @@ class Solution {
     public int findKthLargest(int[] nums, int k) {
         Arrays.sort(nums);
         int min = Integer.MAX_VALUE;
-        for(int i =nums.length-1,j=0;j<k;j++,i--){
-            if(min>nums[i]){
-                min =nums[i];
-            }
-        }
+        int i =nums.length-1;
+          while(k!=0){
+              int val = nums[i];
+               min = val;
+              i--;
+              k--;
+          }
         return min;
     }
 }
