@@ -1,44 +1,24 @@
 class Solution {
+    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+        List<List<Integer>>ans = new ArrayList<>();
+        List<Integer>tempans = new ArrayList<>();
+        combination(candidates,target,0,ans , tempans);
+        return ans;
+    }
     
-    List<List<Integer>> resultList = new ArrayList<>();
-    
-    public List<List<Integer>> combinationSum(int[] arr, int target) {
+    public static void combination(int[]num ,int target,int idx , List<List<Integer>>ans,List<Integer>tempans){
+        if(target==0){
+        List<Integer>temp = new ArrayList<>(tempans);
+            ans.add(temp);
             
-        getTargetCombination(arr, 0, target, new ArrayList<Integer>());
-        return resultList;
+        }
+        for(int i=idx;i<num.length;i++){
+            if(target-num[i]>=0){
+                tempans.add(num[i]);
+                combination(num , target-num[i], i ,ans ,tempans);
+                tempans.remove(tempans.size()-1);
+            }
+        }
+        
     }
-    
-    
-    public void getTargetCombination(int[] arr, int position, int currentTarget, List<Integer> result) {
-
-        /**
-         * Base case
-         * 1. If currentTarget is reaching to Zero
-         * 2. Current Position is equal to the length of the Array
-         */
-        if (currentTarget == 0) {
-            resultList.add(new ArrayList<>(result));
-            return;
-        }
-        if (position == arr.length) {
-            return;
-        }
-
-        /**
-         * There are two cases
-         * 1. Pick the current value if the current value (i.e arr[position]) is less than or equal to the currentTarget
-         *    value then use the same attribute by passing the same position
-         *
-         *  2. Not picking up the current element by not reducing the currentTarget value and increasing the position
-         */
-        if (arr[position] <= currentTarget) {
-            result.add(arr[position]);
-            getTargetCombination(arr, position, currentTarget - arr[position], result);
-            // removing the last element because post adding of the value the call came back
-            result.remove(result.size() - 1);
-        }
-        // not picked
-        getTargetCombination(arr, position + 1, currentTarget, result);
-    }
-    
 }
