@@ -1,11 +1,11 @@
 class Solution {
     
     public int tribonacci(int n) {
-        int [] dp = new int[n+1];
-        int ans  = tribonaci_memo( n, dp);
+        // int [] dp = new int[n+1];
+        int ans  = tribonaci_memo( n);
         return ans;
     }
-    public static int tribonaci_memo(int N , int[]dp){
+    public static int tribonaci_memo(int N ){
           int a =0 ,b=1 ,c=1;
         for(int n =0;n<N;n++){
             int sum = a+b+c;
