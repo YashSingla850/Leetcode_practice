@@ -6,14 +6,14 @@ class Solution {
         return ans;
     }
     public static int tribonaci_memo(int N , int[]dp){
-        for(int n =0;n<=N;n++){
-           if(n<=2){
-               dp[n] =  (n==0?0:1);
-               continue;
-           }
-            dp[n]=  dp[n-1]+dp[n-2]+dp[n-3];
+          int a =0 ,b=1 ,c=1;
+        for(int n =0;n<N;n++){
+            int sum = a+b+c;
+            a =b;
+            b=c;
+            c = sum;
         }
-        return dp[N];
+        return a;
     }
 }
 
