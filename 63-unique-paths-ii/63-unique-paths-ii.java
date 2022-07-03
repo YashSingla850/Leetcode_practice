@@ -5,6 +5,11 @@ class Solution {
             return 0;
         }
         int dp[][] = new int[n][m];
+        for(int i =0;i<n;i++){
+            for(int j =0;j<m;j++){
+                dp[i][j] = -1;
+            }
+        }
         int dir[][] = {{-1,0},{0,-1}};
         for(int er =0;er<=Er;er++){
             for(int ec =0;ec<=Ec;ec++){
