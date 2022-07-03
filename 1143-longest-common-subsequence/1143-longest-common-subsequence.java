@@ -4,7 +4,7 @@ class Solution {
         int [][]dp = new int [n+1][m+1];
         for(int[]d:dp) Arrays.fill(d, -1);
         int ans =longestCommonSubsequence_memo(s1 ,s2, n, m, dp); 
-        display2D(dp);
+        // display2D(dp);
         return ans;
         
     }
