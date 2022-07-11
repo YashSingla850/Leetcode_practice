@@ -7,19 +7,23 @@ class Solution {
           int ans = helper(n , dp);
         return ans;
     }
-    public int helper(int n , int[]dp){
-       
-        if(n==0){
-            return dp[n] = 1;
+    public int helper(int N , int[]dp){
+       for(int n = 0;n<=N;n++){
+              if(n==0){
+            dp[n] = 1;
+            continue;
         }
-        if(dp[n]!= 0){
-            return dp[n];
-        }
+        
         if(n<=1){
-            return dp[n] = helper(n-1 , dp);
+             dp[n] = dp[n-1];
+        }else{
+            dp[n] = dp[n-1]+dp[n-2] ;
         }
-       return dp[n] = helper(n-1 , dp)+helper(n-2,dp);
+          
+       }
+     return dp[N];
     }
+    
     
 }
 
