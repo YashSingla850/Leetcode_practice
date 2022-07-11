@@ -1,24 +1,32 @@
+//  TABULATION -:
+
 class Solution {
     public int climbStairs(int n) {
-        int []dp = new int [n+1];
-        return  climbStairs_tabu(n ,dp);
+         int []dp = new int[n+1];
+        // Arrays.fill(dp , -1);
+          int ans = helper(n , dp);
+        return ans;
     }
-    public int climbStairs_tabu(int N , int[]dp){
-        for(int n=0 ;n<=N;n++){
-       if(n<=1){
-            dp[n] =1;
-           continue;
-       }
-      
-         dp[n] = dp[n-1]+dp[n-2];
+    public int helper(int n , int[]dp){
+       
+        if(n==0){
+            return dp[n] = 1;
         }
-        return dp[N];
+        if(dp[n]!= 0){
+            return dp[n];
+        }
+        if(n<=1){
+            return dp[n] = helper(n-1 , dp);
+        }
+       return dp[n] = helper(n-1 , dp)+helper(n-2,dp);
     }
     
 }
 
+// MEMOIZATION -:
 
-// class Solution {
+
+// class Sol.ution {
 //     public int climbStairs(int n) {
 //         int []dp = new int [n+1];
 //         return  climbStairs_memo(n ,dp);
