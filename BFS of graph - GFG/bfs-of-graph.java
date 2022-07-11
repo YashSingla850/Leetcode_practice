@@ -31,32 +31,24 @@ class GFG {
 }
 // } Driver Code Ends
 
-
 class Solution {
-    class pair{
-        int v ;
-        pair(int v){
-            this.v =v;
-        }
-    }
-    // Function to return Breadth First Traversal of given graph.
+   
+
     public ArrayList<Integer> bfsOfGraph(int V, ArrayList<ArrayList<Integer>> adj) {
-        // Code here
-    
-        ArrayDeque<pair>queue = new ArrayDeque<>();
+        ArrayDeque<Integer>queue = new ArrayDeque<>();
         ArrayList<Integer>list = new ArrayList<>();
         boolean[]visited =  new boolean[V];
-        queue.add(new pair(0));
+        queue.add(0);
         while(queue.size()>0){
-            pair rem = queue.remove();
-            if(visited[rem.v]==true){
+            int rem = queue.remove();
+            if(visited[rem]==true){
                 continue;
             }
-            visited[rem.v]= true;
-            list.add(rem.v);
-            for(int nbr:adj.get(rem.v)){
+            visited[rem]= true;
+            list.add(rem);
+            for(int nbr:adj.get(rem)){
                 if(visited[nbr]==false){
-                    queue.add(new pair(nbr));
+                    queue.add(nbr);
                 }
             }
         }
@@ -64,3 +56,33 @@ class Solution {
     }
    
 }
+// class Solution {
+//     class pair{
+//         int v ;
+//         pair(int v){
+//             this.v =v;
+//         }
+//     }
+
+//     public ArrayList<Integer> bfsOfGraph(int V, ArrayList<ArrayList<Integer>> adj) {
+//         ArrayDeque<pair>queue = new ArrayDeque<>();
+//         ArrayList<Integer>list = new ArrayList<>();
+//         boolean[]visited =  new boolean[V];
+//         queue.add(new pair(0));
+//         while(queue.size()>0){
+//             pair rem = queue.remove();
+//             if(visited[rem.v]==true){
+//                 continue;
+//             }
+//             visited[rem.v]= true;
+//             list.add(rem.v);
+//             for(int nbr:adj.get(rem.v)){
+//                 if(visited[nbr]==false){
+//                     queue.add(new pair(nbr));
+//                 }
+//             }
+//         }
+//         return list;
+//     }
+   
+// }
