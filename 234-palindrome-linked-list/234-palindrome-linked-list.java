@@ -12,8 +12,8 @@ class Solution {
     public boolean isPalindrome(ListNode head) {
         if(head==null ||head.next==null) return true;
         ListNode mid = mid(head);
-        // ListNode nhead = mid.next;
-          ListNode nhead = reverse(mid.next);
+        ListNode nhead = mid.next;
+       nhead = reverse(nhead);
         mid .next = null;
         ListNode p1 = head;
         ListNode p2 = nhead;
@@ -26,8 +26,8 @@ class Solution {
             p1 = p1.next;
             p2 = p2.next;
         }
-        // nhead = reverse(nhead);
-        // mid.next = nhead;
+        nhead = reverse(nhead);
+        mid.next = nhead;
         
         return flag;
     }
