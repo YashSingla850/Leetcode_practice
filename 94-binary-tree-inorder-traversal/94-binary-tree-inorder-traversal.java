@@ -30,12 +30,7 @@ class Solution {
             return ;
         }
         helper(node.left);
-        if(node.left==null ){
-            // ans.add(null);
             ans.add(node.val);
-        }else{
-            ans.add(node.val);
-        }
         helper(node.right);
     }
 }
