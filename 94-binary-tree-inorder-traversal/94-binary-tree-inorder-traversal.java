@@ -14,42 +14,50 @@
  * }
  */
 
-
 class Solution {
      List<Integer> ans;
     public List<Integer> inorderTraversal(TreeNode root) {
-       ans = new ArrayList<>();
-        if(root==null){
-            return new ArrayList<>();
+    List<Integer> ans = new ArrayList<>();
+        Stack<TreeNode>st = new Stack<>();
+        // if(root==null)return new ArrayList<>();
+        TreeNode node = root;
+        while(true){
+            if(node!=null){
+                st.push(node);
+                node = node.left;
+            }else{
+                if(st.isEmpty()){
+                    break;
+                }
+                node = st.pop();
+                ans.add(node.val);
+                node = node.right;
+            }
         }
-        helper(root);    
         return ans;
-    }
-    public void helper(TreeNode node){
-        if(node==null){
-            return ;
-        }
-        helper(node.left);
-            ans.add(node.val);
-        helper(node.right);
-    }
 }
+ }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// class Solution {
+//      List<Integer> ans;
+//     public List<Integer> inorderTraversal(TreeNode root) {
+//        ans = new ArrayList<>();
+//         if(root==null){
+//             return new ArrayList<>();
+//         }
+//         helper(root);    
+//         return ans;
+//     }
+//     public void helper(TreeNode node){
+//         if(node==null){
+//             return ;
+//         }
+//         helper(node.left);
+//             ans.add(node.val);
+//         helper(node.right);
+//     }
+// }
 
 // class Solution {
 //     public List<Integer> inorderTraversal(TreeNode root) {
