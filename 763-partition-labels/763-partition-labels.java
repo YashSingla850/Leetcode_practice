@@ -1,7 +1,7 @@
 class Solution {
     public List<Integer> partitionLabels(String s) {
         int [] map = new int[26];
-        Arrays.fill(map,-1);
+        // Arrays.fill(map,-1);
         for(int i =0;i< s.length();i++){
             char ch  = s.charAt(i);
             map[ch-'a'] = i;
