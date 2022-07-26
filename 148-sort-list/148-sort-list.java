@@ -8,21 +8,71 @@
  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
-class Solution {
-public ListNode sortList(ListNode head) {
-   ListNode Fake = new ListNode(0);
-    ArrayList<Integer> list = new ArrayList();
-    ListNode temp = head;
-    while(temp!=null){
-        list.add(temp.val); 
-        temp=temp.next;
+
+
+class Solution
+{
+    //Function to sort the given linked list using Merge Sort.
+    public ListNode mid(ListNode head){
+        if(head==null || head.next==null)return head;
+        ListNode slow = head;
+        ListNode fast = head;
+        while(fast.next!=null && fast.next.next!=null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
     }
-    Collections.sort(list);
-    ListNode FakeHead = Fake;
-    for(int i =0; i<list.size(); i++){
-        FakeHead.next = new ListNode(list.get(i));
-        FakeHead = FakeHead.next;
+    
+    public ListNode mergeLL(ListNode l1,ListNode l2){
+        if(l1==null || l2==null){
+            return l1!=null?l1:l2;
+        }
+        ListNode dummy = new ListNode(-1);
+        ListNode prev = dummy;
+        ListNode c1 = l1;
+        ListNode c2 = l2;
+        while(c1!=null&&c2!=null){
+            if(c1.val<c2.val){
+                prev.next = c1;
+                c1 = c1.next;
+            }else{
+                prev.next=  c2;
+                c2 = c2.next;
+            }
+            prev = prev.next;
+        }
+        prev.next = c1!=null?c1:c2;
+        return dummy.next;
     }
-    return Fake.next;
+    
+    
+   public ListNode sortList(ListNode head) {
+      if(head==null || head.next==null)return head;
+      ListNode mid = mid(head);
+      ListNode nhead = mid.next;
+      mid.next =null;
+      ListNode l1 = sortList(head);
+      ListNode l2 = sortList(nhead);
+      return mergeLL(l1,l2);
+      
+    }
 }
-}
+// class Solution {
+// public ListNode sortList(ListNode head) {
+//    ListNode Fake = new ListNode(0);
+//     ArrayList<Integer> list = new ArrayList();
+//     ListNode temp = head;
+//     while(temp!=null){
+//         list.add(temp.val); 
+//         temp=temp.next;
+//     }
+//     Collections.sort(list);
+//     ListNode FakeHead = Fake;
+//     for(int i =0; i<list.size(); i++){
+//         FakeHead.next = new ListNode(list.get(i));
+//         FakeHead = FakeHead.next;
+//     }
+//     return Fake.next;
+// }
+// }
