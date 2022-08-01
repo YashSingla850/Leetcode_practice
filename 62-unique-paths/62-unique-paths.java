@@ -1,6 +1,9 @@
 class Solution{
     public int uniquePaths(int n , int m){
         int [][]dp = new int [n][m];
+        for(int []d:dp){
+            Arrays.fill(d,-1);
+        }
         int [][]dir = {{-1,0},{0,-1}};
         return helper(dp , n-1,m-1,dir);
     }
